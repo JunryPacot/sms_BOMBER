@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Junry Pacot SMS Bomber</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      padding-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h2>Junry Pacot SMS Bomber</h2>
+  <input id="number" type="text" placeholder="Enter phone number" />
+  <input id="count" type="number" placeholder="How many messages?" />
+  <button onclick="sendSms()">Send SMS</button>
+  <p id="status"></p>
+  <footer>Developed by: Junry Pacot</footer>
+
+  <script>
+    async function sendSms() {
+      const number = document.getElementById('number').value;
+      const count = document.getElementById('count').value;
+      document.getElementById("status").textContent = "Sending...";
+
+      const res = await fetch("https://your-backend.onrender.com/api/smsbomb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ number, count })
+      });
+
+      const result = await res.json();
+      document.getElementById("status").textContent = result.message || "Sent!";
+    }
+  </script>
+</body>
+</html>
