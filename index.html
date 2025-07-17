@@ -116,9 +116,9 @@
         });
 
         const result = await res.json();
-        status.textContent = result.message || "✅ Sent successfully 
+        status.textContent = result.message || "✅ Sent successfully";
         setTimeout(() => {
-          window.location.href =" https://junrypacot.github.io/sms_BOMBER/Voidsec.html"; // Credit to https://github.com/Kumikinangina
+        window.location.href = "https://junrypacot.github.io/sms_BOMBER/Voidsec.html";
         }, 1500);
       } catch (error) {
         status.textContent = "❌ Something went wrong!";
